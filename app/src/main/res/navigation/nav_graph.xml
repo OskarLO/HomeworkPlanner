@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/overview">
+    <fragment
+        android:id="@+id/enterTaskFragment"
+        android:name="com.test2.homework_planer.EnterTaskFragment"
+        android:label="fragment_enter_task"
+        tools:layout="@layout/fragment_enter_task" >
+        <argument
+            android:name="taskTitle"
+            app:argType="string"
+            android:defaultValue="blank" />
+    </fragment>
+    <fragment
+        android:id="@+id/overview"
+        android:name="com.test2.homework_planer.Overview"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_overview" >
+        <action
+            android:id="@+id/action_overview_to_createItemFragment"
+            app:destination="@id/createItemFragment" />
+        <action
+            android:id="@+id/action_overview_to_enterTaskFragment"
+            app:destination="@id/enterTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createItemFragment"
+        android:name="com.test2.homework_planer.CreateItemFragment"
+        android:label="fragment_create_item"
+        tools:layout="@layout/fragment_create_item" />
+</navigation>

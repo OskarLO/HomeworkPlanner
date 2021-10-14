@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Homework_Planer</string>
+    <string name="filler">Oblig 3 | Robot-tech | 03. sept.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
