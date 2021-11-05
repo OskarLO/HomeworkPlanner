@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,9 @@ public class EnterTaskFragment extends Fragment {
     private Button btnDeleteTask;
     private Button btnCancle;
     private TextView textViewTitle;
+    private TextView textViewDeadline;
+    private TextView editComment;
+    private String taskId;
 
     public EnterTaskFragment() {
         // Required empty public constructor
@@ -35,16 +39,49 @@ public class EnterTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         textViewTitle = view.findViewById(R.id.textViewTitle);
+        textViewDeadline = view.findViewById(R.id.textViewDeadline);
+        editComment = view.findViewById(R.id.editComment);
+
         Bundle argsTemp = getArguments();
         EnterTaskFragmentArgs args = EnterTaskFragmentArgs.fromBundle(argsTemp);
-        textViewTitle.setText(args.getTaskTitle());
 
+        textViewTitle.setText(args.getTaskTitle());
+        textViewDeadline.setText("Deadline: " + String.valueOf(args.getTaskDeadline()));
+        editComment.setText(args.getTaskComment());
+        taskId = args.getTaskId();
+
+        btnSaveTask = view.findViewById(R.id.buttonSave);
+        btnSaveTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newComment = editComment.getText().toString();
+
+                EnterTaskFragmentDirections.ActionEnterTaskFragmentToOverview action = EnterTaskFragmentDirections.actionEnterTaskFragmentToOverview();
+                action.setEditTaskId(taskId);
+                action.setNewComment(newComment);
+                action.setSaveBool(true);
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
+
+        btnDeleteTask = view.findViewById(R.id.buttonDelete);
+        btnDeleteTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EnterTaskFragmentDirections.ActionEnterTaskFragmentToOverview action = EnterTaskFragmentDirections.actionEnterTaskFragmentToOverview();
+                action.setEditTaskId(taskId);
+                action.setDeleteBool(true);
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
         btnCancle = view.findViewById(R.id.btnCancle);
         btnCancle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Overview()).commit();
+            public void onClick(View view) {
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Overview()).commit();
+                EnterTaskFragmentDirections.ActionEnterTaskFragmentToOverview action = EnterTaskFragmentDirections.actionEnterTaskFragmentToOverview();
+                Navigation.findNavController(view).navigate(action);
             }
         });
 

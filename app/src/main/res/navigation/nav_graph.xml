@@ -13,22 +13,77 @@
             android:name="taskTitle"
             app:argType="string"
             android:defaultValue="blank" />
+        <argument
+            android:name="taskDeadline"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="taskComment"
+            app:argType="string"
+            android:defaultValue="blank" />
+        <argument
+            android:name="taskId"
+            app:argType="string"
+            android:defaultValue="blank" />
+        <action
+            android:id="@+id/action_enterTaskFragment_to_overview"
+            app:destination="@id/overview" />
     </fragment>
     <fragment
         android:id="@+id/overview"
         android:name="com.test2.homework_planer.Overview"
         android:label="fragment_overview"
-        tools:layout="@layout/fragment_overview" >
+        tools:layout="@layout/fragment_overview">
         <action
             android:id="@+id/action_overview_to_createItemFragment"
             app:destination="@id/createItemFragment" />
         <action
             android:id="@+id/action_overview_to_enterTaskFragment"
             app:destination="@id/enterTaskFragment" />
+        <argument
+            android:name="editTaskId"
+            android:defaultValue="blank"
+            app:argType="string" />
+        <argument
+            android:name="newComment"
+            android:defaultValue="blank"
+            app:argType="string" />
+        <argument
+            android:name="deleteBool"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="saveBool"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="createBool"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="createTitle"
+            android:defaultValue="blank"
+            app:argType="string" />
+        <argument
+            android:name="createSubject"
+            android:defaultValue="blank"
+            app:argType="string" />
+        <argument
+            android:name="createDeadline"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="createComment"
+            android:defaultValue="blank"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/createItemFragment"
         android:name="com.test2.homework_planer.CreateItemFragment"
         android:label="fragment_create_item"
-        tools:layout="@layout/fragment_create_item" />
+        tools:layout="@layout/fragment_create_item" >
+        <action
+            android:id="@+id/action_createItemFragment_to_overview"
+            app:destination="@id/overview" />
+    </fragment>
 </navigation>

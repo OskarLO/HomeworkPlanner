@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.444" />
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/buttonCancle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -148,18 +148,6 @@
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <EditText
-        android:id="@+id/enterDeadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/divider6" />
-
-    <EditText
         android:id="@+id/editComment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -185,4 +173,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEnterDate"
+        style="?android:spinnerStyle"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="center"
+        android:text="Enter Date"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/divider6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

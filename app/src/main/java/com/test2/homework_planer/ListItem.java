@@ -5,16 +5,29 @@ import java.util.Date;
 
 public class ListItem {
 
+    private String taskId;
     private String title;
     private String subject;
     private int deadline;
     private String comment;
 
-    public ListItem(String title, String subject, int deadline, String comment) {
+    public ListItem() {
+    }
+
+    public ListItem(String taskId, String title, String subject, int deadline, String comment) {
+        this.taskId = taskId;
         this.title = title;
         this.subject = subject;
         this.deadline = deadline;
         this.comment = comment;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 
     public String getTitle() {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "511484736729",
+    "project_id": "homeworkplanner-b44f7",
+    "storage_bucket": "homeworkplanner-b44f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511484736729:android:4829d298b7e914417afac8",
+        "android_client_info": {
+          "package_name": "com.test2.homework_planer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511484736729-esb0jjaa1irpp8p5cie12mek1m57fbuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwodnX2qgno5_ibTpVq7uuhr1oLCwmx7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511484736729-esb0jjaa1irpp8p5cie12mek1m57fbuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
