@@ -15,8 +15,8 @@
             android:defaultValue="blank" />
         <argument
             android:name="taskDeadline"
-            app:argType="integer"
-            android:defaultValue="0" />
+            app:argType="string"
+            android:defaultValue="blank" />
         <argument
             android:name="taskComment"
             app:argType="string"
@@ -70,8 +70,8 @@
             app:argType="string" />
         <argument
             android:name="createDeadline"
-            android:defaultValue="0"
-            app:argType="integer" />
+            android:defaultValue="blank"
+            app:argType="string" />
         <argument
             android:name="createComment"
             android:defaultValue="blank"

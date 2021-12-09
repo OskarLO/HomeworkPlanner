@@ -15,12 +15,8 @@ import android.widget.TextView;
 
 public class EnterTaskFragment extends Fragment {
 
-    private Button btnSaveTask;
-    private Button btnDeleteTask;
-    private Button btnCancle;
-    private TextView textViewTitle;
-    private TextView textViewDeadline;
-    private TextView editComment;
+    private Button btnSaveTask, btnDeleteTask, btnCancle;
+    private TextView textViewTitle, textViewDeadline, editComment;
     private String taskId;
 
     public EnterTaskFragment() {
@@ -46,7 +42,7 @@ public class EnterTaskFragment extends Fragment {
         EnterTaskFragmentArgs args = EnterTaskFragmentArgs.fromBundle(argsTemp);
 
         textViewTitle.setText(args.getTaskTitle());
-        textViewDeadline.setText("Deadline: " + String.valueOf(args.getTaskDeadline()));
+        textViewDeadline.setText("Deadline: " + args.getTaskDeadline());
         editComment.setText(args.getTaskComment());
         taskId = args.getTaskId();
 
@@ -84,6 +80,5 @@ public class EnterTaskFragment extends Fragment {
                 Navigation.findNavController(view).navigate(action);
             }
         });
-
     }
 }

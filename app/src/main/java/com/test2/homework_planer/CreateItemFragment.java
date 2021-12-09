@@ -16,14 +16,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
 public class CreateItemFragment extends Fragment {
 
     private int day, month, year;
+    private String strDate;
     private Button buttonSave, buttonCancle, btnEnterDate;
     private DatePickerDialog.OnDateSetListener listener;
+    private SimpleDateFormat sdf;
+    private EditText titleBox, subjectBox, commentBox;
+
 
     public CreateItemFragment() {
         // Required empty public constructor
@@ -39,6 +44,10 @@ public class CreateItemFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        titleBox = getActivity().findViewById(R.id.enterTitle);
+        subjectBox = getActivity().findViewById(R.id.enterSubject);
+        commentBox = getActivity().findViewById(R.id.editComment);
 
         buttonSave = view.findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +66,6 @@ public class CreateItemFragment extends Fragment {
             }
         });
 
-
         listener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -65,14 +73,14 @@ public class CreateItemFragment extends Fragment {
                 int newMonth = month+1;
                 int newYear = year;
 
-                String strDate = (newDay + "/" + newMonth + "/" + newYear);
+                strDate = (newDay + "/" + newMonth + "/" + newYear);
                 btnEnterDate.setText(strDate);
 
-                System.out.println("success");
             }
         };
 
         pickDate(view);
+        getTime();
     }
 
     private void pickDate(View view) {
@@ -93,33 +101,28 @@ public class CreateItemFragment extends Fragment {
         day = c.get(Calendar.DAY_OF_MONTH);
         month = c.get(Calendar.MONTH);
         year = c.get(Calendar.YEAR);
+
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        strDate = sdf.format(c.getTime());
     }
 
-    //datePickerDialog er ikke helt ferdig så deadline settes til 0
     private void sendData(View view) {
-        EditText titleBox = getActivity().findViewById(R.id.enterTitle);
-        EditText subjectBox = getActivity().findViewById(R.id.enterSubject);
-        //EditText deadlineBox = getActivity().findViewById(R.id.enterDeadline);
-        EditText commentBox = getActivity().findViewById(R.id.editComment);
-
 
         String title = titleBox.getText().toString();
         String subject = subjectBox.getText().toString();
-        //int deadline = Integer.parseInt(deadlineBox.getText().toString().trim());
+        String deadline = strDate;
         String comment = commentBox.getText().toString();
 
-        CreateItemFragmentDirections.ActionCreateItemFragmentToOverview action = CreateItemFragmentDirections.actionCreateItemFragmentToOverview();
-        action.setCreateBool(true);
-        action.setCreateTitle(title);
-        action.setCreateSubject(subject);
-        action.setCreateDeadline(0);//deadline
-        action.setCreateComment(comment);
-
-        if(title!=null && subject!=null){
+        if (!(title.equals("") || subject.equals(""))) {
+            CreateItemFragmentDirections.ActionCreateItemFragmentToOverview action = CreateItemFragmentDirections.actionCreateItemFragmentToOverview();
+            action.setCreateBool(true);
+            action.setCreateTitle(title);
+            action.setCreateSubject(subject);
+            action.setCreateDeadline(deadline);
+            action.setCreateComment(comment);
             Navigation.findNavController(view).navigate(action);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), "Title, Subject and Deadline fields are required!", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

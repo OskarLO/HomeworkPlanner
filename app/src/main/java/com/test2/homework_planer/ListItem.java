@@ -8,13 +8,13 @@ public class ListItem {
     private String taskId;
     private String title;
     private String subject;
-    private int deadline;
+    private String deadline;
     private String comment;
 
     public ListItem() {
     }
 
-    public ListItem(String taskId, String title, String subject, int deadline, String comment) {
+    public ListItem(String taskId, String title, String subject, String deadline, String comment) {
         this.taskId = taskId;
         this.title = title;
         this.subject = subject;
@@ -46,11 +46,11 @@ public class ListItem {
         this.subject = subject;
     }
 
-    public int getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(int deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
